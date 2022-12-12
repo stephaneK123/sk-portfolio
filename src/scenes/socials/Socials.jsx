@@ -9,7 +9,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 
-export default Socials = ({ title = "You are social", subtitle="welcome fool" }) => {
+const Socials = ({ title = "You are social", subtitle="welcome fool" }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
@@ -32,4 +32,4 @@ export default Socials = ({ title = "You are social", subtitle="welcome fool" })
         </Box>
     );
 };
-
+export default Socials;

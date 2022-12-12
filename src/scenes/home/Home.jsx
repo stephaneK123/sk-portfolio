@@ -1,6 +1,6 @@
 import { Typography, Box, IconButton, useTheme } from "@mui/material";
 import { useContext } from "react";
-import { ColorModeContext, tokens } from "../../theme";
+import { ColorModeContext, tokens } from "../../theme"
 import InputBase from "@mui/material/InputBase";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -8,8 +8,9 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
+import SeeNotfication from "../../components/SeeNotifications";
 
-export default Home = ({ title = "You are Home", subtitle = "welcome fool" }) => {
+const Home = ({ title = "You are Home", subtitle = "welcome fool" }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
@@ -28,8 +29,10 @@ export default Home = ({ title = "You are Home", subtitle = "welcome fool" }) =>
                 <Typography variant="h5" color={colors.greenAccent[400]}>
                     {subtitle}
                 </Typography>
+                <SeeNotfication></SeeNotfication>
             </Box>
         </Box>
     );
 };
 
+export default Home;

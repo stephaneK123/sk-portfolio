@@ -9,7 +9,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 
-export default Credibility = ({ title = "You are Home", subtitle = "welcome fool" }) => {
+const Credibility = ({ title = "You are credibility", subtitle = "show the stuff you've done" }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
@@ -33,3 +33,4 @@ export default Credibility = ({ title = "You are Home", subtitle = "welcome fool
     );
 };
 
+export default Credibility;
