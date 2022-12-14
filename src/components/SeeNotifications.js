@@ -22,27 +22,26 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 const messages = [
     {
         id: 1,
-        primary: 'Brunch this week?',
-        secondary: "I'll be in the neighbourhood this week. Let's grab a bite to eat",
+        primary: 'John Doe',
+        secondary: "my grandma can build something better in her sleep",
         person: '/static/images/avatar/5.jpg',
     },
     {
         id: 2,
-        primary: 'Birthday Gift',
-        secondary: `Do you have a suggestion for a good present for John on his work
-      anniversary. I am really confused & would love your thoughts on it.`,
+        primary: 'Alex John',
+        secondary: `looks alright`,
         person: '/static/images/avatar/1.jpg',
     },
     {
         id: 3,
-        primary: 'Recipe to try',
-        secondary: 'I am try out this new BBQ recipe, I think this might be amazing',
+        primary: 'Tom',
+        secondary: 'I am try out this new out myself, I think this might be amazing to build on top of this?',
         person: '/static/images/avatar/2.jpg',
     },
     {
         id: 4,
-        primary: 'Yes!',
-        secondary: 'I have the tickets to the ReactConf for this year.',
+        primary: 'Stephane',
+        secondary: 'looks ehhhhhh',
         person: '/static/images/avatar/3.jpg',
     }
 ];
@@ -58,11 +57,11 @@ const StyledFab = styled(Fab)({
 
 export default function SeeNotfication() {
     return (
-        <React.Fragment sx={{}}>
+        <React.Fragment >
             <CssBaseline />
-            <Paper square sx={{ pb: '0px', width: '45%'}}>
+            <Paper square sx={{ m: 1, pb: '0px', width: '100%', height: '100%'}}>
                 <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0 }}>
-                    Reviews 
+                    Website Reviews  
                 </Typography>
                 <List sx={{ mb: 2 }}>
                     {messages.map(({ id, primary, secondary, person }) => (

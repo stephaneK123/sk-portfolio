@@ -17,8 +17,9 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import { tokens } from "../theme";
 import MyImage from "../assets/myImage.jpg";
-import { positions, textAlign } from "@mui/system";
+import MyImage2 from "../assets/sk_pic.jpg";
 
+import { positions, textAlign } from "@mui/system";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -58,8 +59,11 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
+        "& .pro-sidebar": {
+          height: `100%`
+        },
         "& .pro-sidebar-inner": {
-          background: `${colors.primary[400]} !important`,
+          background: `${'#141b2d'} !important`,
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -73,6 +77,7 @@ const Sidebar = () => {
         "& .pro-menu-item.active": {
           color: "#6870fa !important",
         },
+        display: { xs: "none", sm: "inline-block" },
       }}
     >
       <ProSidebar width={400} collapsed={isCollapsed}>
@@ -104,11 +109,10 @@ const Sidebar = () => {
             <Box mb="25px">
               <Box display="flex" justifyContent="center" alignItems="center">
                 <img
-                  src={`${MyImage}?w=auto&h=100&fit=crop&auto=format`}
+                  src={`${MyImage2}?w=auto&h=100&fit=crop&auto=format`}
                   srcSet={`${pics.img}?w=161&fit=crop&auto=format&dpr=2 2x`}
                   alt={pics.title}
                   height="400px"
-      
                   loading="lazy"
                 />
               </Box>
@@ -127,6 +131,13 @@ const Sidebar = () => {
                   color={colors.greenAccent[500]}
                 >
                   Newbie Software Engineer
+                </Typography>
+                <Typography
+                  variant="h6"
+                  color={colors.grey[300]}
+                  sx={{ m: "15px 0 5px 20px", textAlign: "center" }}
+                >
+                  Made with ❤️ and hurry by SK 2022
                 </Typography>
               </Box>
             </Box>
@@ -168,13 +179,6 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-             <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px", textAlign: "center"}}
-            >
-              Made with ❤️ and Hurry by SK 
-            </Typography>
           </Box>
         </Menu>
       </ProSidebar>

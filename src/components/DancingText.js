@@ -3,7 +3,7 @@ import ReactTextTransition, { presets } from "react-text-transition";
 
 const randomNumber = () => Math.floor(Math.random() * 9999999999 + 100000);
 
-const texts = ["Fast", "Scalable", "Potato", "Cabbage", "Cucumber", "Tomato"];
+const texts = ["buoyant", "captivated", "cheerful", "cheery", "Cucumber", "chipper", "chirpy", "chuffed", "content", "contented", "delighted", "ecstatic", "elated", "energetic", "entertained", "enthusiastic", "excited", "exhilarated", "exuberant"];
 
 const paragraphs = [
     "Quis commodo velit quis cupidatat non amet aliqua sint veniam labore. Culpa ea laboris consequat mollit proident Lorem cupidatat officia fugiat. Tempor sunt non ullamco irure in proident. Laboris minim esse qui non id et anim commodo. Esse id do irure ut eiusmod aliqua irure dolor in est ullamco culpa enim. ",
@@ -33,25 +33,20 @@ class DancingText extends Component {
             this.setState({
                 textFastIndex: this.state.textFastIndex + 1
             });
-        }, 150);
+        }, 600);
     }
 
     render() {
         return (
             <React.Fragment>
                 <section>
-                    <h2>Delay prop.</h2>
                     <section className="inline">
                         <ReactTextTransition
                             children={texts[this.state.textIndex % texts.length]}
                             springConfig={presets.gentle}
                             className="big"
-                            delay={300}
+                            delay={100}
                             inline
-                        />
-                        <ReactTextTransition
-                            children={paragraphs[this.state.paragraphIndex % texts.length]}
-                            springConfig={presets.gentle}
                         />
                     </section>
                 </section>
@@ -60,4 +55,4 @@ class DancingText extends Component {
     }
 }
 
-export { DancingText };
+export default DancingText;

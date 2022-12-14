@@ -20,7 +20,7 @@ export const ReadTime = () => {
             fontSize={25}
             color={"#e0e0e0"}
             fontWeight="bold"
-            sx={{ m: "1px", position: 'absolute'}}
+            sx={{ m: 1, position: 'absolute'}}
         >
             <p> {date.toLocaleTimeString()}</p>
             <p> {date.toLocaleDateString()}</p>

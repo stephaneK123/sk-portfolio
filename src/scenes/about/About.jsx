@@ -1,37 +1,95 @@
-import { Typography, Box, IconButton, useTheme } from "@mui/material";
-import { useContext } from "react";
-import { ColorModeContext, tokens } from "../../theme"
-import InputBase from "@mui/material/InputBase";
-import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import SearchIcon from "@mui/icons-material/Search";
+import { Box, useTheme } from "@mui/material";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { tokens } from "../../theme";
 
-
-const About = ({ title = "You are About", subtitle = "welcome my guy" }) => {
-    const theme = useTheme();
-    const colors = tokens(theme.palette.mode);
-    const colorMode = useContext(ColorModeContext);
-
-    return (
-        <Box display="flex" justifyContent="space-between" p={2}>
-            <Box mb="30px">
-                <Typography
-                    variant="h2"
-                    color={colors.grey[100]}
-                    fontWeight="bold"
-                    sx={{ m: "0 0 5px 0" }}
-                >
-                    {title}
-                </Typography>
-                <Typography variant="h5" color={colors.greenAccent[400]}>
-                    {subtitle}
-                </Typography>
-            </Box>
-        </Box>
-    );
+const About = () => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  return (
+    <Box m={2} overflow={"auto"}>
+      <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography color={colors.greenAccent[500]} variant="h5">
+            An Important Question
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography color={colors.greenAccent[500]} variant="h5">
+            Another Important Question
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography color={colors.greenAccent[500]} variant="h5">
+            Your Favorite Question
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography color={colors.greenAccent[500]} variant="h5">
+            Some Random Question
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography color={colors.greenAccent[500]} variant="h5">
+            The Final Question
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. A diam
+            sollicitudin tempor id eu nisl. Lacus laoreet non curabitur gravida
+            arcu ac tortor dignissim convallis. Justo eget magna fermentum
+            iaculis. Aliquet porttitor lacus luctus accumsan tortor posuere ac
+            ut consequat. Sit amet consectetur adipiscing elit duis tristique
+            sollicitudin nibh. Massa enim nec dui nunc mattis enim ut tellus
+            elementum. Pellentesque habitant morbi tristique senectus et netus
+            et malesuada. Etiam non quam lacus suspendisse faucibus interdum.
+            Bibendum arcu vitae elementum curabitur vitae nunc sed. Diam vel
+            quam elementum pulvinar etiam non quam lacus suspendisse. Tortor
+            vitae purus faucibus ornare suspendisse sed nisi lacus. Sit amet
+            nisl suscipit adipiscing bibendum est ultricies integer quis.
+            Nascetur ridiculus mus mauris vitae ultricies leo integer malesuada.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+    </Box>
+  );
 };
 
 export default About;

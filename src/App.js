@@ -12,11 +12,12 @@ import Credibility from "./scenes/credibility/Credibility";
 import Team from "./scenes/team/Team";
 import Socials from "./scenes/socials/Socials";
 import About from "./scenes/about/About";
+import { useLocation } from 'react-router-dom';
 
 function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
-
+  const location = useLocation();  
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
@@ -24,7 +25,7 @@ function App() {
         <div className="app">
           <Sidebar isSidebar={isSidebar} />
           <main className="content">
-            <Topbar dest={"Home"} setIsSidebar={setIsSidebar} />
+            <Topbar dest={location.pathname} setIsSidebar={setIsSidebar} />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/credibility" element={<Credibility />} />
