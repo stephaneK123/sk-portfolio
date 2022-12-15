@@ -128,9 +128,9 @@ const Home = () => {
           >
             <StatBox
               title="32,441"
-              subtitle="New Clients"
+              subtitle="Hours Slepted"
               progress="0.30"
-              increase="+5%"
+              increase="+10%"
               icon={
                 <PersonAddIcon
                   sx={{ color: colors.greenAccent[600], fontSize: "26px" }}

@@ -42,7 +42,7 @@ class DancingText extends Component {
                 <section>
                     <section className="inline">
                         <ReactTextTransition
-                            children={texts[this.state.textIndex % texts.length]}
+                            children={"You are " + texts[this.state.textIndex % texts.length]}
                             springConfig={presets.gentle}
                             className="big"
                             delay={100}
