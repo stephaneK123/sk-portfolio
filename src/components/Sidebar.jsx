@@ -18,8 +18,22 @@ import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import { tokens } from "../theme";
 import MyImage from "../assets/myImage.jpg";
 import MyImage2 from "../assets/sk_pic.jpg";
+import { LinkedInEmbed } from "react-social-media-embed";
 
 import { positions, textAlign } from "@mui/system";
+
+const Linkedin = () => {
+  return (
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <LinkedInEmbed
+        url="https://www.linkedin.com/embed/feed/update/urn:li:share:6898694772484112384"
+        postUrl="https://www.linkedin.com/posts/peterdiamandis_5-discoveries-the-james-webb-telescope-will-activity-6898694773406875648-z-D7"
+        width={325}
+        height={570}
+      />
+    </div>
+  );
+};
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -60,10 +74,10 @@ const Sidebar = () => {
     <Box
       sx={{
         "& .pro-sidebar": {
-          height: `100%`
+          height: `100%`,
         },
         "& .pro-sidebar-inner": {
-          background: `${'#141b2d'} !important`,
+          background: `${"#141b2d"} !important`,
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -80,7 +94,7 @@ const Sidebar = () => {
         display: { xs: "none", sm: "inline-block" },
       }}
     >
-      <ProSidebar width={400} collapsed={isCollapsed}>
+      <ProSidebar positions={"fixed"} width={400} collapsed={isCollapsed}>
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
           <MenuItem
