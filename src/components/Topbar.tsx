@@ -15,12 +15,19 @@ import SeeNotfication from "./SeeNotifications";
 import DancingText from "./DancingText";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import { tokens } from "../theme";
-
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import MyImage2 from "../assets/MacMiller_LiveFromSpace.png";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     alignItems: "flex-start",
     paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(15),
+    paddingBottom: theme.spacing(2),
+    width: "100%",
     // Override media queries injected by theme.mixins.toolbar
     "@media all": {
         minHeight: 128
@@ -40,6 +47,7 @@ const Item = styled(Paper)(({ theme }) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
     height: 50,
+    width: 120,
     lineHeight: '60px',
 }));
 
@@ -89,7 +97,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 export default function ProminentAppBar({ dest = "Home" }) {
-    const theme = useTheme(); 
+    const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     return (
         <Box display="flex" m={1} borderRadius={"20px"}>
@@ -143,29 +151,66 @@ export default function ProminentAppBar({ dest = "Home" }) {
                                 </IconButton>
                             </Box>
                         </Grid>
-                        <Grid item xs={4}>
-                            <ReadTime></ReadTime>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Item elevation={3}>
-                                <DancingText></DancingText>
-                            </Item>
+                        <Grid item xs={12}>
+                            <Box display="flex" justifyContent="space-between" p={2}>
+                                <Grid item xs={4}>
+                                    <ReadTime></ReadTime>
+                                </Grid>
+                                <Item elevation={3} >
+                                    <DancingText></DancingText>
+                                </Item>
 
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Box m={2} display={"grid"}>
-                                <Button
-                                    sx={{
-                                        backgroundColor: colors.blueAccent[700],
-                                        color: colors.grey[100],
-                                        fontSize: "14px",
-                                        fontWeight: "bold",
-                                    }}
-                                >
-                                    <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-                                    Download Resume
-                                </Button>
+
+                                <Box m={2} display={"grid"}>
+                                    <Button
+                                        sx={{
+                                            backgroundColor: colors.blueAccent[700],
+                                            color: colors.grey[100],
+                                            fontSize: "14px",
+                                            fontWeight: "bold",
+                                        }}
+                                    >
+                                        <DownloadOutlinedIcon sx={{ mr: "10px" }} />
+                                        Download Resume
+                                    </Button>
+                                </Box>
+
                             </Box>
+                        </Grid>
+                        <Grid item xs={8} marginTop={8}>
+                            <Card raised sx={{
+                                display: 'flex', maxWidth: 300,
+                                
+                            }}>
+                                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                                    <CardContent sx={{ flex: '1 0 auto' }}>
+                                        <Typography component="div" variant="h5">
+                                            Live From Space
+                                        </Typography>
+                                        <Typography variant="subtitle1" color="text.secondary" component="div">
+                                            Mac Miller
+                                        </Typography>
+                                    </CardContent>
+                                    <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
+                                        <IconButton aria-label="previous">
+                                            {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
+                                        </IconButton>
+                                        <IconButton aria-label="play/pause">
+                                            <PlayArrowIcon sx={{ height: 38, width: 38 }} />
+                                        </IconButton>
+                                        <IconButton aria-label="next">
+                                            {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
+                                        </IconButton>
+                                    </Box>
+                                </Box>
+                                <CardMedia 
+                                    component="img"
+                                    height="250"
+                                    sx={{ padding: "1em 1em 1em 1em", objectFit: "contain" }}
+                                    image={MyImage2}
+                                    alt="Live from space album cover"
+                                />
+                            </Card>
                         </Grid>
                     </Grid>
                 </StyledToolbar>

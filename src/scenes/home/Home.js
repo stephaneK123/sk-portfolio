@@ -14,6 +14,16 @@ import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
 import { Helmet } from "react-helmet";
 import { useEffect } from "react";
+import HotelIcon from '@mui/icons-material/Hotel';
+import CarCrashIcon from '@mui/icons-material/CarCrash';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Checkbox from '@mui/material/Checkbox';
+import Avatar from '@mui/material/Avatar';
 
 const Home = () => {
   const theme = useTheme();
@@ -90,7 +100,7 @@ const Home = () => {
           >
             <StatBox
               title="12,361"
-              subtitle="Emails Sent"
+              subtitle="Unread Work Emails"
               progress="0.75"
               increase="+14%"
               icon={
@@ -108,12 +118,12 @@ const Home = () => {
             justifyContent="center"
           >
             <StatBox
-              title="431,225"
-              subtitle="Sales Obtained"
+              title="11"
+              subtitle="Traffic tickets"
               progress="0.50"
               increase="+21%"
               icon={
-                <PointOfSaleIcon
+                <CarCrashIcon
                   sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
                 />
               }
@@ -127,12 +137,12 @@ const Home = () => {
             justifyContent="center"
           >
             <StatBox
-              title="32,441"
-              subtitle="Hours Slepted"
+              title="5.5"
+              subtitle="Avg Hours Slepted"
               progress="0.30"
               increase="+10%"
               icon={
-                <PersonAddIcon
+                <HotelIcon
                   sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
                 />
               }
@@ -146,15 +156,10 @@ const Home = () => {
             justifyContent="center"
           >
             <StatBox
-              title="1,325,134"
-              subtitle="Traffic Received"
+              title="$2,187.50"
+              subtitle="Spent This Month"
               progress="0.80"
-              increase="+43%"
-              icon={
-                <TrafficIcon
-                  sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-                />
-              }
+              increase="+33%"
             />
           </Box>
 
@@ -170,34 +175,7 @@ const Home = () => {
               display="flex "
               justifyContent="space-between"
               alignItems="center"
-            >
-              <Box>
-                <Typography
-                  variant="h5"
-                  fontWeight="600"
-                  color={colors.grey[100]}
-                >
-                  Revenue Generated
-                </Typography>
-                <Typography
-                  variant="h3"
-                  fontWeight="bold"
-                  color={colors.greenAccent[500]}
-                >
-                  $59,342.32
-                </Typography>
-              </Box>
-              <Box>
-                <IconButton>
-                  <DownloadOutlinedIcon
-                    sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
-                  />
-                </IconButton>
-              </Box>
-            </Box>
-            <Box height="250px" m="-20px 0 0 0">
-              <LineChart isDashboard={true} />
-            </Box>
+            > </Box>
           </Box>
           <Box
             gridColumn="span 4"
@@ -213,8 +191,8 @@ const Home = () => {
               colors={colors.grey[100]}
               p="15px"
             >
-              <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
-                Recent Transactions
+              <Typography color={colors.grey[100]} variant="h6" fontWeight="600">
+                Thoughts while making this..
               </Typography>
             </Box>
             {mockTransactions.map((transaction, i) => (
@@ -226,25 +204,12 @@ const Home = () => {
                 borderBottom={`4px solid ${colors.primary[500]}`}
                 p="15px"
               >
-                <Box>
-                  <Typography
-                    color={colors.greenAccent[500]}
-                    variant="h5"
-                    fontWeight="600"
-                  >
-                    {transaction.txId}
-                  </Typography>
-                  <Typography color={colors.grey[100]}>
-                    {transaction.user}
-                  </Typography>
-                </Box>
-                <Box color={colors.grey[100]}>{transaction.date}</Box>
                 <Box
                   backgroundColor={colors.greenAccent[500]}
                   p="5px 10px"
                   borderRadius="4px"
                 >
-                  ${transaction.cost}
+                  {transaction.text}
                 </Box>
               </Box>
             ))}
@@ -258,7 +223,7 @@ const Home = () => {
             p="30px"
           >
             <Typography variant="h5" fontWeight="600">
-              Campaign
+              Motivation
             </Typography>
             <Box
               display="flex"
@@ -272,9 +237,9 @@ const Home = () => {
                 color={colors.greenAccent[500]}
                 sx={{ mt: "15px" }}
               >
-                $48,352 revenue generated
+                Slightly Higher than normal
               </Typography>
-              <Typography>Includes extra misc expenditures and costs</Typography>
+              <Typography p="10px" alignContent={"center"}>Mainly due to job hunting, and oh finals!</Typography>
             </Box>
           </Box>
           <Box
@@ -304,20 +269,13 @@ const Home = () => {
               fontWeight="600"
               sx={{ marginBottom: "15px" }}
             >
-              Geography Based Traffic
+              Where I have family
             </Typography>
             <Box height="200px">
               <GeographyChart isDashboard={true} />
             </Box>
           </Box>
         </Box>
-        <Typography
-          variant="h5"
-          fontWeight="600"
-          sx={{ marginBottom: "15px", height: "100px" }}
-        >
-          Geography Based Traffic
-        </Typography>
       </Box>
     </>
   );
