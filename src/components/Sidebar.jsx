@@ -19,7 +19,7 @@ import { tokens } from "../theme";
 import MyImage from "../assets/myImage.jpg";
 import MyImage2 from "../assets/sk_pic.jpg";
 import { LinkedInEmbed } from "react-social-media-embed";
-
+import Add from "./Add";
 import { positions, textAlign } from "@mui/system";
 
 const Linkedin = () => {
@@ -193,6 +193,9 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+            <Box mb="25px" m={"20px"}>
+              <Add />
+            </Box>
           </Box>
         </Menu>
       </ProSidebar>

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect, useState, useRef } from "react";
 import { styled } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -22,6 +23,11 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import MyImage2 from "../assets/MacMiller_LiveFromSpace.png";
+import { setClientToken } from "../dt/remote/spotifyFetch";
+import { loginEndpoint } from "../dt/remote/spotifyFetch";
+import { useLocation } from "react-router-dom";
+// import AudioPLayer from "./AudioPlayer";
+import apiClient from "../dt/remote/spotifyFetch";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     alignItems: "flex-start",
@@ -94,12 +100,82 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     }
 }));
 
+const Login = () => {
+    return (
+        <div className="login-page" >
+            <img
+                src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png"
+                alt="logo-spotify"
+                className="logo"
+            />
+            <a href={loginEndpoint}>
+                <div className="login-btn">LOG IN</div>
+            </a>
+        </div>
+    );
+}
 
 
-export default function ProminentAppBar({ dest = "Home" }) {
+
+export default function ProminentAppBar({ total, dest = "Home" }) {
+    //colors and theme
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    return (
+
+    const [token, setToken] = useState("");
+
+    //grab token
+    useEffect(() => {
+        const token = window.localStorage.getItem("token");
+        const hash = window.location.hash;
+        window.location.hash = "";
+        if (!token && hash) {
+            const _token = hash.split("&")[0].split("=")[1];
+            window.localStorage.setItem("token", _token);
+            setToken(_token);
+            setClientToken(_token);
+        } else {
+            setToken(token);
+            setClientToken(token);
+        }
+
+        
+    }, [token]);
+
+    //get the spotify data
+    const location = useLocation();
+    const [tracks, setTracks] = useState([]);
+    const [currentTrack, setCurrentTrack] = useState({});
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        if (location.state) {
+            apiClient
+                // .get("playlists/" + location.state?.id + "/tracks")
+                .get("/users/12132658213/playlists?limit=15")
+                .then((res) => {
+                    console.log("data got hit\n" + res);
+                    // setTracks(res.data.items);
+                    // setCurrentTrack(res.data?.items[0]?.track);
+
+                });
+        }
+    }, [location.state]);
+
+    useEffect(() => {
+        setCurrentTrack(tracks[currentIndex]?.track);
+
+    }, [currentIndex, tracks]);
+
+    //get current track information 
+    const artists = [];
+    currentTrack?.album?.artists.forEach((artist) => {
+        artists.push(artist.name);
+    });
+
+
+
+    return !token ? (<Login />) : (
         <Box display="flex" m={1} borderRadius={"20px"}>
             <AppBar position="static">
                 <StyledToolbar>
@@ -174,43 +250,46 @@ export default function ProminentAppBar({ dest = "Home" }) {
                                         Download Resume
                                     </Button>
                                 </Box>
-
                             </Box>
                         </Grid>
                         <Grid item xs={8} marginTop={8}>
-                            <Card raised sx={{
-                                display: 'flex', maxWidth: 300,
-                                
-                            }}>
-                                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                                    <CardContent sx={{ flex: '1 0 auto' }}>
-                                        <Typography component="div" variant="h5">
-                                            Live From Space
-                                        </Typography>
-                                        <Typography variant="subtitle1" color="text.secondary" component="div">
-                                            Mac Miller
-                                        </Typography>
-                                    </CardContent>
-                                    <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-                                        <IconButton aria-label="previous">
-                                            {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
-                                        </IconButton>
-                                        <IconButton aria-label="play/pause">
-                                            <PlayArrowIcon sx={{ height: 38, width: 38 }} />
-                                        </IconButton>
-                                        <IconButton aria-label="next">
-                                            {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
-                                        </IconButton>
+                            {/* <AudioPLayer /> */}
+                            <Box>
+                                <Card raised sx={{
+                                    display: 'flex', maxWidth: 300,
+
+                                }}>
+                                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                                        <CardContent sx={{ flex: '1 0 auto' }}>
+                                            <Typography component="div" variant="h5">
+                                                {currentTrack?.name}
+                                            </Typography>
+                                            <Typography variant="subtitle1" color="text.secondary" component="div">
+
+                                                {artists.join(" | ")}
+                                            </Typography>
+                                        </CardContent>
+                                        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
+                                            <IconButton aria-label="previous" >
+                                                {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
+                                            </IconButton>
+                                            <IconButton aria-label="play/pause">
+                                                <PlayArrowIcon sx={{ height: 38, width: 38 }} />
+                                            </IconButton>
+                                            <IconButton aria-label="next">
+                                                {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
+                                            </IconButton>
+                                        </Box>
                                     </Box>
-                                </Box>
-                                <CardMedia 
-                                    component="img"
-                                    height="250"
-                                    sx={{ padding: "1em 1em 1em 1em", objectFit: "contain" }}
-                                    image={MyImage2}
-                                    alt="Live from space album cover"
-                                />
-                            </Card>
+                                    <CardMedia
+                                        component="img"
+                                        height="250"
+                                        sx={{ padding: "1em 1em 1em 1em", objectFit: "contain" }}
+                                        image={currentTrack?.album?.images[0]?.url}
+                                        alt="Live from space album cover"
+                                    />
+                                </Card>
+                            </Box>
                         </Grid>
                     </Grid>
                 </StyledToolbar>

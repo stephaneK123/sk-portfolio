@@ -8,29 +8,37 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
+import Post from "../../components/Post.jsx";
 
-const Team = ({ title = "You are Team", subtitle = "welcome team fool" }) => {
-    const theme = useTheme();
-    const colors = tokens(theme.palette.mode);
-    const colorMode = useContext(ColorModeContext);
+const Team = ({
+  title = "You are Team",
+  subtitle = "Here you can learn more about each member",
+}) => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  const colorMode = useContext(ColorModeContext);
 
-    return (
-        <Box display="flex" justifyContent="space-between" p={2}>
-            <Box mb="30px">
-                <Typography
-                    variant="h2"
-                    color={colors.grey[100]}
-                    fontWeight="bold"
-                    sx={{ m: "0 0 5px 0" }}
-                >
-                    {title}
-                </Typography>
-                <Typography variant="h5" color={colors.greenAccent[400]}>
-                    {subtitle}
-                </Typography>
-            </Box>
-        </Box>
-    );
+  return (
+    <Box display="flex" justifyContent="space-between" p={2}>
+      <Box mb="30px">
+        <Typography
+          variant="h2"
+          color={colors.grey[100]}
+          fontWeight="bold"
+          sx={{ m: "0 0 5px 0" }}
+        >
+          {title}
+        </Typography>
+        <Typography variant="h5" color={colors.greenAccent[400]}>
+          {subtitle}
+        </Typography>
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+      </Box>
+    </Box>
+  );
 };
 
 export default Team;

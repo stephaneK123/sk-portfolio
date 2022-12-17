@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
-// import Team from "./scenes/team";
-// import Credibility from "./scenes/credibility";
-// import Contacts from "./scenes/contacts";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme" //error can't find module??? 
 import Home from "./scenes/home/Home"
@@ -13,11 +10,12 @@ import Team from "./scenes/team/Team";
 import Socials from "./scenes/socials/Socials";
 import About from "./scenes/about/About";
 import { useLocation } from 'react-router-dom';
+import AudioPLayer from "./components/AudioPlayer";
 
 function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
-  const location = useLocation();  
+  const location = useLocation();
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
@@ -30,8 +28,9 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/credibility" element={<Credibility />} />
               <Route path="/team" element={<Team />} />
-               <Route path="/socials" element={<Socials />} />
+              <Route path="/socials" element={<Socials />} />
               <Route path="/about" element={<About />} />
+
             </Routes>
           </main>
         </div>

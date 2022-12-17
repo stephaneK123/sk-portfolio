@@ -1,4 +1,4 @@
-import { tokens } from "../theme";
+import { tokens } from "../../theme";
 
 export const mockDataTeam = [
 
@@ -268,90 +268,109 @@ export const mockDataInvoices = [
     },
 ];
 
-export const MockMyThoughtsWhileMakingThis = [
 
-
-]
-
-
-export const mockTransactions = [
+export const MyThoughtsWhileMakingThis = [
     {
         text: "when will I go sleep",
     },
     {
-        text: "133.45",
+        text: "why is job hunting so hard"
     },
     {
-        cost: "43.95",
+        text: "how much time do I have left",
     },
     {
-        cost: "200.95",
+        text: "why did I spend a day debugging",
     },
     {
-        cost: "13.55",
+        text: "why isn't my react compiling",
     },
     {
-        cost: "43.95",
+        text: "how do I manually compile seperate files",
     },
     {
-        cost: "24.20",
-    }, 
-    {
-        cost: "24.20",
-    }, 
-    {
-        cost: "24.20",
-    }, 
-    {
-        cost: "24.20",
-    }, 
-    {
-        cost: "24.20",
+        text: "why can't I import my images",
     },
     {
-        cost: "24.20",
+        text: "why can't I import my components",
     },
     {
-        cost: "24.20",
+        text: "how to avoud court fees",
     },
     {
-        cost: "24.20",
+        text: "why is everyone obssesed with AI",
     },
     {
-        cost: "24.20",
+        text: "how much homework do I have left",
     },
     {
-        cost: "24.20",
+        text: "how do I debug my ui",
     },
     {
-        cost: "24.20",
+        text: "where do I put pictures",
     },
     {
-        cost: "24.20",
+        text: "firefox's dev tool is really nice",
     },
     {
-        cost: "24.20",
+        text: "why is css so confusing",
     },
     {
-        cost: "24.20",
+        text: "when is snow coming",
     },
     {
-        cost: "24.20",
+        text: "who even uses react, what's my other joices",
     },
     {
-        cost: "24.20",
+        text: "what the heck is jsx",
     },
     {
-        cost: "24.20",
+        text: "why is sandbox weird",
     },
     {
-        cost: "24.20",
+        text: "why is code sandbox so cool",
+    },
+    {
+        text: "how do I debug this thing",
+    },
+    {
+        text: "how do I maintain state in this thing",
+    },
+    {
+        text: "why is css confusing",
+    },
+    {
+        text: "why is debugging js so complicated",
+    },
+    {
+        text: "why is nothing compiling"
+    },
+    {
+        text: "what the heck is tsx"
+    },
+    {
+        text: "why is my thing not rendering"
+    },
+    {
+        text: "who made stackoverflow"
+    },
+    {
+        text: "why are my taxes so high"
+    },
+    {
+        text: "how do I create my own sandbox"
+    },
+    {
+        text: "what is code sandbox"
+    },
+    {
+        text: "why is my thing not rendering"
     }
 ];
 
 export const mockBarData = [
     {
-        country: "AD",
+        country: "MON",
         "hot dog": 137,
         "hot dogColor": "hsl(229, 70%, 50%)",
         burger: 96,
@@ -362,7 +381,7 @@ export const mockBarData = [
         donutColor: "hsl(340, 70%, 50%)",
     },
     {
-        country: "AE",
+        country: "TUES",
         "hot dog": 55,
         "hot dogColor": "hsl(307, 70%, 50%)",
         burger: 28,
@@ -373,7 +392,7 @@ export const mockBarData = [
         donutColor: "hsl(275, 70%, 50%)",
     },
     {
-        country: "AF",
+        country: "WED",
         "hot dog": 109,
         "hot dogColor": "hsl(72, 70%, 50%)",
         burger: 23,
@@ -384,7 +403,7 @@ export const mockBarData = [
         donutColor: "hsl(256, 70%, 50%)",
     },
     {
-        country: "AG",
+        country: "THURS",
         "hot dog": 133,
         "hot dogColor": "hsl(257, 70%, 50%)",
         burger: 52,
@@ -395,7 +414,7 @@ export const mockBarData = [
         donutColor: "hsl(9, 70%, 50%)",
     },
     {
-        country: "AI",
+        country: "FRI",
         "hot dog": 81,
         "hot dogColor": "hsl(190, 70%, 50%)",
         burger: 80,
@@ -406,7 +425,7 @@ export const mockBarData = [
         donutColor: "hsl(285, 70%, 50%)",
     },
     {
-        country: "AL",
+        country: "SAT",
         "hot dog": 66,
         "hot dogColor": "hsl(208, 70%, 50%)",
         burger: 111,
@@ -417,7 +436,7 @@ export const mockBarData = [
         donutColor: "hsl(76, 70%, 50%)",
     },
     {
-        country: "AM",
+        country: "SUN",
         "hot dog": 80,
         "hot dogColor": "hsl(87, 70%, 50%)",
         burger: 47,

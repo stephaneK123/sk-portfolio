@@ -1,6 +1,6 @@
 import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
-import { mockTransactions } from "../../dt/chartData";
+import { MyThoughtsWhileMakingThis } from "../../dt/local/chartData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import EmailIcon from "@mui/icons-material/Email";
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
@@ -11,7 +11,6 @@ import LineChart from "../../components/LineChart";
 import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
-import ProgressCircle from "../../components/ProgressCircle";
 import { Helmet } from "react-helmet";
 import { useEffect } from "react";
 import HotelIcon from '@mui/icons-material/Hotel';
@@ -24,7 +23,8 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
-
+import TableList from "../../components/TableList";
+import ProgressCircle from "../../components/ProgressCircle";
 const Home = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -169,13 +169,8 @@ const Home = () => {
             gridRow="span 2"
             backgroundColor={colors.primary[400]}
           >
-            <Box
-              mt="25px"
-              p="0 30px"
-              display="flex "
-              justifyContent="space-between"
-              alignItems="center"
-            > </Box>
+            <TableList />
+
           </Box>
           <Box
             gridColumn="span 4"
@@ -195,7 +190,7 @@ const Home = () => {
                 Thoughts while making this..
               </Typography>
             </Box>
-            {mockTransactions.map((transaction, i) => (
+            {MyThoughtsWhileMakingThis.map((transaction, i) => (
               <Box
                 key={`${transaction.txId}-${i}`}
                 display="flex"
@@ -252,7 +247,7 @@ const Home = () => {
               fontWeight="600"
               sx={{ padding: "30px 30px 0 30px" }}
             >
-              Sales Quantity
+              Junk Food I Eat
             </Typography>
             <Box height="250px" mt="-20px">
               <BarChart isDashboard={true} />
