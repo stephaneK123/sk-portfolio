@@ -100,64 +100,24 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     }
 }));
 
-const Login = () => {
-    return (
-        <div className="login-page" >
-            <img
-                src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png"
-                alt="logo-spotify"
-                className="logo"
-            />
-            <a href={loginEndpoint}>
-                <div className="login-btn">LOG IN</div>
-            </a>
-        </div>
-    );
-}
-
-
-
 export default function ProminentAppBar({ total, dest = "Home" }) {
     //colors and theme
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-
-    const [token, setToken] = useState("");
-
-    //grab token
-    useEffect(() => {
-        const token = window.localStorage.getItem("token");
-        const hash = window.location.hash;
-        window.location.hash = "";
-        if (!token && hash) {
-            const _token = hash.split("&")[0].split("=")[1];
-            window.localStorage.setItem("token", _token);
-            setToken(_token);
-            setClientToken(_token);
-        } else {
-            setToken(token);
-            setClientToken(token);
-        }
-
-        
-    }, [token]);
 
     //get the spotify data
     const location = useLocation();
     const [tracks, setTracks] = useState([]);
     const [currentTrack, setCurrentTrack] = useState({});
     const [currentIndex, setCurrentIndex] = useState(0);
-
     useEffect(() => {
         if (location.state) {
             apiClient
-                // .get("playlists/" + location.state?.id + "/tracks")
-                .get("/users/12132658213/playlists?limit=15")
+                .get("playlists/0H9EekEFftvy58egALyQQH/tracks")
                 .then((res) => {
-                    console.log("data got hit\n" + res);
-                    // setTracks(res.data.items);
-                    // setCurrentTrack(res.data?.items[0]?.track);
-
+                    console.log(res)
+                    setTracks(res.data.items);
+                    setCurrentTrack(res.data?.items[0]?.track);
                 });
         }
     }, [location.state]);
@@ -173,9 +133,7 @@ export default function ProminentAppBar({ total, dest = "Home" }) {
         artists.push(artist.name);
     });
 
-
-
-    return !token ? (<Login />) : (
+    return (
         <Box display="flex" m={1} borderRadius={"20px"}>
             <AppBar position="static">
                 <StyledToolbar>

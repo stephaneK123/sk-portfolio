@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
+import { ProSidebar, Menu, MenuItem, SidebarFooter } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
@@ -15,11 +15,10 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-import { tokens } from "../theme";
-import MyImage from "../assets/myImage.jpg";
-import MyImage2 from "../assets/sk_pic.jpg";
+import { tokens } from "../../theme";
+import MyImage2 from "../../assets/sk_pic.jpg";
 import { LinkedInEmbed } from "react-social-media-embed";
-import Add from "./Add";
+import Add from "../Add";
 import { positions, textAlign } from "@mui/system";
 
 const Linkedin = () => {
@@ -74,7 +73,7 @@ const Sidebar = () => {
     <Box
       sx={{
         "& .pro-sidebar": {
-          height: `100%`,
+          height: `100% !important`,
         },
         "& .pro-sidebar-inner": {
           background: `${"#141b2d"} !important`,
@@ -193,10 +192,9 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            <Box mb="25px" m={"20px"}>
-              <Add />
-            </Box>
           </Box>
+
+          <Add />
         </Menu>
       </ProSidebar>
     </Box>

@@ -9,7 +9,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import Add from "@mui/icons-material/Add";
-import Post from "../../components/Post.jsx";
+import Post from "../../components/sidebar/Post.jsx";
 import axios from "axios";
 // import AudioPLayer from "../../components/AudioPlayer";
 const Socials = ({

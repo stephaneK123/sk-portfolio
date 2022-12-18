@@ -20,48 +20,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import Add from "../../components/Add";
-  const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "registrarId", headerName: "Registrar ID" },
-    {
-      field: "name",
-      headerName: "Name",
-      flex: 1,
-      cellClassName: "name-column--cell",
-    },
-    {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "phone",
-      headerName: "Phone Number",
-      flex: 1,
-    },
-    {
-      field: "email",
-      headerName: "Email",
-      flex: 1,
-    },
-    {
-      field: "address",
-      headerName: "Address",
-      flex: 1,
-    },
-    {
-      field: "city",
-      headerName: "City",
-      flex: 1,
-    },
-    {
-      field: "zipCode",
-      headerName: "Zip Code",
-      flex: 1,
-    },
-  ];
+import Form from "../../components/Form";
 
 const Credibility = ({
   title = "You are credibility",
@@ -73,20 +32,7 @@ const Credibility = ({
 
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
-      <Box mb="30px">
-        <Typography
-          variant="h2"
-          color={colors.grey[100]}
-          fontWeight="bold"
-          sx={{ m: "0 0 5px 0" }}
-        >
-          {title}
-        </Typography>
-        <Typography variant="h5" color={colors.greenAccent[400]}>
-          {subtitle}
-        </Typography>
-      </Box>
-     
+      <Form />
     </Box>
   );
 };
