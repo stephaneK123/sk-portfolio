@@ -15,7 +15,7 @@ import { Box } from "@mui/system";
 import Typography from '@mui/material/Typography';
 import { setClientToken } from "./dt/remote/spotifyFetch";
 import { loginEndpoint } from "./dt/remote/spotifyFetch";
-import { tempToken } from "./dt/remote/spotifyFetch";
+
 const NotFound = () => {
   return (
     <Box
@@ -54,25 +54,6 @@ function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
   const location = useLocation();
-
-  //grab token for spotify API
-  const [token, setToken] = useState("");
-  useEffect(() => {
-    const token = window.localStorage.getItem("token");
-    const hash = window.location.hash;
-    window.location.hash = "";
-    if (!token && hash) {
-      const _token = hash.split("&")[0].split("=")[1];
-      window.localStorage.setItem("token", _token);
-      setToken(_token);
-      setClientToken(tempToken);
-    } else {
-      setToken(token);
-      setClientToken(tempToken);
-    }
-
-
-  }, [token]);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
