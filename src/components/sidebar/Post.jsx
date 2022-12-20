@@ -10,6 +10,7 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
+
 const Post = () => {
   return (
     <Card sx={{ margin: 1 }}>

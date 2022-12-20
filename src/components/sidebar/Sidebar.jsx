@@ -18,7 +18,7 @@ import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import { tokens } from "../../theme";
 import MyImage2 from "../../assets/sk_pic.jpg";
 import { LinkedInEmbed } from "react-social-media-embed";
-import Add from "../Add";
+import Add from "./Add";
 import { positions, textAlign } from "@mui/system";
 
 const Linkedin = () => {

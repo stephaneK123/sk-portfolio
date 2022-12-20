@@ -28,7 +28,7 @@ import { loginEndpoint } from "../dt/remote/spotifyFetch";
 import { useLocation } from "react-router-dom";
 // import AudioPLayer from "./AudioPlayer";
 import apiClient from "../dt/remote/spotifyFetch";
-
+import { Helmet } from "react-helmet";
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     alignItems: "flex-start",
     paddingTop: theme.spacing(1),
@@ -112,12 +112,38 @@ const Login = () => {
                     className="logo"
                 />
                 <a href={loginEndpoint}>
-                    <div className="login-btn">LOG IN</div>
+                    <div className="login-btn">LOG IN TO SPOTIFY</div>
                 </a>
             </div>
         </Box>
     );
 }
+
+const useScript = (url) => {
+    useEffect(() => {
+        const head = document.querySelector("head");
+        const script = document.createElement('script');
+
+
+        // script.type = "application/javascript";
+        script.setAttribute("src", url);
+        script.setAttribute("type", "texts/javascript");
+        script.setAttribute("async", true);
+
+        head.appendChild(script);
+
+        script.addEventListener("load", () => {
+            console.log("file loaded");
+        });
+
+        script.addEventListener("error", (ev) => {
+            console.log("error on loading file", ev);
+        });
+        // return () => {
+        //     head.removeChild(script);
+        // }
+    }, [url]);
+};
 
 export default function ProminentAppBar({ total, dest = "Home" }) {
     //colors and theme
@@ -172,127 +198,143 @@ export default function ProminentAppBar({ total, dest = "Home" }) {
         artists.push(artist.name);
     });
 
+    //linkedin 
+    useScript("https://platform.linkedin.com/badges/js/profile.js");
+
     return !token ? (
         <Login />
     ) : (
-        <Box display="flex" m={1} borderRadius={"20px"}>
-            <AppBar position="static">
-                <StyledToolbar>
-                    <Grid
-                        container
-                        direction="row"
-                        justifyContent="space-between"
-                        alignItems="center"
-                    >
-                        <Grid item xs={12}>
-                            <Box display="flex" justifyContent="space-between" p={2}>
-                                <Typography
-                                    variant="h1"
-                                    noWrap
-                                    component="div"
-                                    sx={{ flexGrow: 1, alignSelf: "flex-end" }}
-                                >
-                                    {dest}
-                                </Typography>
-
-                                <Search>
-                                    <SearchIconWrapper>
-                                        <SearchIcon />
-                                    </SearchIconWrapper>
-                                    <StyledInputBase
-                                        placeholder="Where to ?"
-                                        inputProps={{ "aria-label": "search" }}
-                                    />
-                                </Search>
-                                <IconButton
-                                    size="large"
-                                    edge="end"
-                                    aria-label="account of current user"
-                                    aria-controls={"hello"}
-                                    aria-haspopup="true"
-
-                                    color="inherit"
-                                >
-                                    <AccountCircle />
-                                </IconButton>
-
-                                <IconButton
-                                    size="large"
-                                    aria-label="display more actions"
-                                    edge="end"
-                                    color="inherit"
-                                >
-                                    <MoreIcon />
-                                </IconButton>
-                            </Box>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Box display="flex" justifyContent="space-between" p={2}>
-                                <Grid item xs={4}>
-                                    <ReadTime></ReadTime>
-                                </Grid>
-                                <Item elevation={3} >
-                                    <DancingText></DancingText>
-                                </Item>
-
-
-                                <Box m={2} display={"grid"}>
-                                    <Button
-                                        sx={{
-                                            backgroundColor: colors.blueAccent[700],
-                                            color: colors.grey[100],
-                                            fontSize: "14px",
-                                            fontWeight: "bold",
-                                        }}
+        <>
+            <Box display="flex" m={1} borderRadius={"20px"}>
+                <AppBar position="static">
+                    <StyledToolbar>
+                        <Grid
+                            container
+                            direction="row"
+                            justifyContent="space-between"
+                            alignItems="center"
+                        >
+                            <Grid item xs={12}>
+                                <Box display="flex" justifyContent="space-between" p={2}>
+                                    <Typography
+                                        variant="h1"
+                                        noWrap
+                                        component="div"
+                                        sx={{ flexGrow: 1, alignSelf: "flex-end" }}
                                     >
-                                        <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-                                        Download Resume
-                                    </Button>
+                                        {dest}
+                                    </Typography>
+
+                                    <Search>
+                                        <SearchIconWrapper>
+                                            <SearchIcon />
+                                        </SearchIconWrapper>
+                                        <StyledInputBase
+                                            placeholder="Where to ?"
+                                            inputProps={{ "aria-label": "search" }}
+                                        />
+                                    </Search>
+                                    <IconButton
+                                        size="large"
+                                        edge="end"
+                                        aria-label="account of current user"
+                                        aria-controls={"hello"}
+                                        aria-haspopup="true"
+
+                                        color="inherit"
+                                    >
+                                        <AccountCircle />
+                                    </IconButton>
+
+                                    <IconButton
+                                        size="large"
+                                        aria-label="display more actions"
+                                        edge="end"
+                                        color="inherit"
+                                    >
+                                        <MoreIcon />
+                                    </IconButton>
                                 </Box>
-                            </Box>
-                        </Grid>
-                        <Grid item xs={8} marginTop={8}>
-                            {/* <AudioPLayer /> */}
-                            <Box>
-                                <Card raised sx={{
-                                    display: 'flex', maxWidth: 300,
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Box display="flex" justifyContent="space-between" p={2}>
+                                    <Grid item xs={4}>
+                                        <ReadTime></ReadTime>
+                                    </Grid>
+                                    <Item elevation={3} >
+                                        <DancingText></DancingText>
+                                    </Item>
 
-                                }}>
-                                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                                        <CardContent sx={{ flex: '1 0 auto' }}>
-                                            <Typography component="div" variant="h5">
-                                                {currentTrack?.name}
-                                            </Typography>
-                                            <Typography variant="subtitle1" color="text.secondary" component="div">
 
-                                                {artists.join(" | ")}
-                                            </Typography>
-                                        </CardContent>
-                                        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-                                            <IconButton aria-label="previous" >
-                                                {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
-                                            </IconButton>
-                                            <IconButton aria-label="play/pause">
-                                                <PlayArrowIcon sx={{ height: 38, width: 38 }} />
-                                            </IconButton>
-                                            <IconButton aria-label="next">
-                                                {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
-                                            </IconButton>
-                                        </Box>
+                                    <Box m={2} display={"grid"}>
+                                        <Button
+                                            sx={{
+                                                backgroundColor: colors.blueAccent[700],
+                                                color: colors.grey[100],
+                                                fontSize: "14px",
+                                                fontWeight: "bold",
+                                            }}
+                                        >
+                                            <DownloadOutlinedIcon sx={{ mr: "10px" }} />
+                                            Download Resume
+                                        </Button>
                                     </Box>
-                                    <CardMedia
-                                        component="img"
-                                        height="250"
-                                        sx={{ padding: "1em 1em 1em 1em", objectFit: "contain" }}
-                                        image={currentTrack?.album?.images[0]?.url}
-                                        alt="Live from space album cover"
-                                    />
-                                </Card>
-                            </Box>
+                                </Box>
+                            </Grid>
+                            <Grid item xs={4} marginTop={5}>
+                                <Box>
+                                    {/* <Card raised sx={{
+                                    display: 'flex', maxWidth: 400,
+
+                                }}> */}
+                                    <div className="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="skatende" data-version="v1">
+                                        <a className="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/skatende?trk=profile-badge">Stephane Katende</a>
+                                    </div>
+                                    {/* </Card> */}
+                                </Box>
+                            </Grid>
+                            <Grid item xs={7} marginTop={5} marginLeft={2}>
+                                <Box>
+                                    <Card raised sx={{
+                                        display: 'flex', maxWidth: 400,
+
+                                    }}>
+                                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                                            <CardContent sx={{ flex: '1 0 auto' }}>
+                                                <Typography component="div" variant="h5">
+                                                    {currentTrack?.name}
+                                                </Typography>
+                                                <Typography variant="subtitle1" color="text.secondary" component="div">
+
+                                                    {artists.join(" | ")}
+                                                </Typography>
+                                            </CardContent>
+                                            <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
+                                                <IconButton aria-label="previous" >
+                                                    {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
+                                                </IconButton>
+                                                <IconButton aria-label="play/pause">
+                                                    <PlayArrowIcon sx={{ height: 38, width: 38 }} />
+                                                </IconButton>
+                                                <IconButton aria-label="next">
+                                                    {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
+                                                </IconButton>
+                                            </Box>
+                                        </Box>
+                                        <CardMedia
+                                            component="img"
+                                            height="250"
+                                            sx={{ padding: "1em 1em 1em 1em", objectFit: "contain" }}
+                                            image={currentTrack?.album?.images[0]?.url}
+                                            alt="Live from space album cover"
+                                        />
+                                    </Card>
+                                </Box>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </StyledToolbar>
-            </AppBar>
-        </Box>
+                    </StyledToolbar>
+                </AppBar>
+            </Box>
+        </>
     );
 }

@@ -74,7 +74,7 @@ const Add = () => {
                             sx={{ width: 30, height: 30 }}
                         />
                         <Typography fontWeight={500} variant="span">
-                            John Doe
+                            Stephane Katende
                         </Typography>
                     </UserBox>
                     <TextField
@@ -96,7 +96,7 @@ const Add = () => {
                         variant="contained"
                         aria-label="outlined primary button group"
                     >
-                        <Button>Post</Button>
+                        <Button>Post it!</Button>
                         <Button sx={{ width: "100px" }}>
                             <DateRange />
                         </Button>

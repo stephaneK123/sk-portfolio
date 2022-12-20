@@ -39,7 +39,7 @@ const Socials = ({
       )
       .then((response) => {
         console.log(response);
-        alert(JSON.Stringify(response));
+        // alert(JSON.Stringify(response));
       });
   }, [currenToken]);
 

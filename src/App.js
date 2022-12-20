@@ -50,6 +50,7 @@ const Login = () => {
   );
 }
 
+
 function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
@@ -69,7 +70,7 @@ function App() {
               <Route path="/team" element={<Team />} />
               <Route path="/socials" element={<Socials />} />
               <Route path="/about" element={<About />} />
-              <Route path='*' element={<NotFound />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
         </div>

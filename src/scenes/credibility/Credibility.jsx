@@ -19,7 +19,7 @@ import {
   ListItemAvatar,
   ListItemText,
 } from "@mui/material";
-import Add from "../../components/Add";
+import Add from "../../components/sidebar/Add";
 import Form from "../../components/Form";
 
 const Credibility = ({
@@ -33,6 +33,7 @@ const Credibility = ({
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
       <Form />
+      
     </Box>
   );
 };
