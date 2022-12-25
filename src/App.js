@@ -10,7 +10,6 @@ import Team from "./scenes/team/Team";
 import Socials from "./scenes/socials/Socials";
 import About from "./scenes/about/About";
 import { useLocation } from 'react-router-dom';
-import AudioPLayer from "./components/AudioPlayer";
 import { Box } from "@mui/system";
 import Typography from '@mui/material/Typography';
 import { setClientToken } from "./dt/remote/spotifyFetch";

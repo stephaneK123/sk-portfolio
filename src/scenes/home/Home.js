@@ -33,10 +33,9 @@ const Home = () => {
   return (
     <>
       <Box m="20px">
-        {/* HEADER */}
+        {/* stephane's intro + download source code */}
         <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Header title="Stephane" subtitle="Someone told me to make a resume website, here it is??" />
-
+          <Header title="Stephane" subtitle="Someone told me to make a resume website, here it is?? updating as time allows" />
           <Box>
             <Button
               sx={{
@@ -52,14 +51,63 @@ const Home = () => {
           </Box>
         </Box>
 
-        {/* GRID & CHARTS */}
+        {/* Main Contents */}
         <Box
           display="grid"
           gridTemplateColumns="repeat(12, 1fr)"
-          gridAutoRows="140px"
+          gridAutoRows="160px"
           gap="20px"
         >
-          {/* ROW 1 */}
+          {/* about me accordion + thoughts while making this...*/}
+          <Box
+            display={"flex"}
+            gridColumn="span 8"
+            gridRow="span 2"
+            height={"100%"}
+            backgroundColor={colors.primary[400]}
+          >
+            <TableList />
+
+          </Box>
+          <Box
+            gridColumn="span 4"
+            gridRow="span 2"
+            backgroundColor={colors.primary[400]}
+            overflow="auto"
+          >
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+              borderBottom={`4px solid ${colors.primary[500]}`}
+              colors={colors.grey[100]}
+              p="15px"
+            >
+              <Typography color={colors.grey[100]} variant="h6" fontWeight="600">
+                Thoughts while making this..
+              </Typography>
+            </Box>
+            {MyThoughtsWhileMakingThis.map((transaction, i) => (
+              <Box
+                key={`${transaction.txId}-${i}`}
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+                borderBottom={`4px solid ${colors.primary[500]}`}
+                p="15px"
+              >
+                <Box
+                  backgroundColor={colors.greenAccent[500]}
+                  p="5px 10px"
+                  borderRadius="4px"
+                >
+                  {transaction.text}
+                </Box>
+              </Box>
+            ))}
+          </Box>
+
+          {/* Unread work emails - money spent this month */}
           <Box
             gridColumn="span 3"
             backgroundColor={colors.primary[400]}
@@ -132,54 +180,7 @@ const Home = () => {
             />
           </Box>
 
-          {/* ROW 2 */}
-          <Box
-            gridColumn="span 8"
-            gridRow="span 2"
-            backgroundColor={colors.primary[400]}
-          >
-            <TableList />
-
-          </Box>
-          <Box
-            gridColumn="span 4"
-            gridRow="span 2"
-            backgroundColor={colors.primary[400]}
-            overflow="auto"
-          >
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
-              borderBottom={`4px solid ${colors.primary[500]}`}
-              colors={colors.grey[100]}
-              p="15px"
-            >
-              <Typography color={colors.grey[100]} variant="h6" fontWeight="600">
-                Thoughts while making this..
-              </Typography>
-            </Box>
-            {MyThoughtsWhileMakingThis.map((transaction, i) => (
-              <Box
-                key={`${transaction.txId}-${i}`}
-                display="flex"
-                justifyContent="space-between"
-                alignItems="center"
-                borderBottom={`4px solid ${colors.primary[500]}`}
-                p="15px"
-              >
-                <Box
-                  backgroundColor={colors.greenAccent[500]}
-                  p="5px 10px"
-                  borderRadius="4px"
-                >
-                  {transaction.text}
-                </Box>
-              </Box>
-            ))}
-          </Box>
-
-          {/* ROW 3 */}
+          {/* motivation - where I have family */}
           <Box
             gridColumn="span 4"
             gridRow="span 2"

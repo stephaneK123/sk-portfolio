@@ -26,9 +26,14 @@ import MyImage2 from "../assets/MacMiller_LiveFromSpace.png";
 import { setClientToken } from "../dt/remote/spotifyFetch";
 import { loginEndpoint } from "../dt/remote/spotifyFetch";
 import { useLocation } from "react-router-dom";
-// import AudioPLayer from "./AudioPlayer";
 import apiClient from "../dt/remote/spotifyFetch";
-import { Helmet } from "react-helmet";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+
+
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     alignItems: "flex-start",
     paddingTop: theme.spacing(1),
@@ -39,14 +44,6 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
         minHeight: 128
     }
 }));
-
-// const Item = styled(Paper)(({ theme }) => ({
-//   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-//   ...theme.typography.body2,
-//   padding: theme.spacing(1),
-//   textAlign: "center",
-//   color: theme.palette.text.secondary
-// }));
 
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -100,6 +97,33 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     }
 }));
 
+const useScript = (url) => {
+    useEffect(() => {
+        const head = document.querySelector("head");
+        const script = document.createElement('script');
+
+
+        // script.type = "application/javascript";
+        script.setAttribute("src", url);
+        script.setAttribute("type", "texts/javascript");
+        script.setAttribute("async", true);
+        script.defer = true;
+        head.appendChild(script);
+
+        script.addEventListener("load", () => {
+            console.log("file loaded");
+        });
+
+        script.addEventListener("error", (ev) => {
+            console.log("error on loading file", ev);
+        });
+
+        // return () => {
+        //     head.removeChild(script);
+        // }
+    }, [url]);
+};
+
 const Login = () => {
     return (
         <Box display="flex" m={1} borderRadius={"20px"}>
@@ -119,37 +143,10 @@ const Login = () => {
     );
 }
 
-const useScript = (url) => {
-    useEffect(() => {
-        const head = document.querySelector("head");
-        const script = document.createElement('script');
-
-
-        // script.type = "application/javascript";
-        script.setAttribute("src", url);
-        script.setAttribute("type", "texts/javascript");
-        script.setAttribute("async", true);
-
-        head.appendChild(script);
-
-        script.addEventListener("load", () => {
-            console.log("file loaded");
-        });
-
-        script.addEventListener("error", (ev) => {
-            console.log("error on loading file", ev);
-        });
-        // return () => {
-        //     head.removeChild(script);
-        // }
-    }, [url]);
-};
-
 export default function ProminentAppBar({ total, dest = "Home" }) {
     //colors and theme
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-
 
     //grab token for spotify API
     const [token, setToken] = useState("");
@@ -199,12 +196,61 @@ export default function ProminentAppBar({ total, dest = "Home" }) {
     });
 
     //linkedin 
-    useScript("https://platform.linkedin.com/badges/js/profile.js");
+    // useScript("https://platform.linkedin.com/badges/js/profile.js");
+
+    //dialog for resume preview 
+    const [open, setOpen] = React.useState(false);
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const descriptionElementRef = React.useRef(null);
+    React.useEffect(() => {
+        if (open) {
+            const { current: descriptionElement } = descriptionElementRef;
+            if (descriptionElement !== null) {
+                descriptionElement.focus();
+            }
+        }
+    }, [open]);
 
     return !token ? (
         <Login />
     ) : (
         <>
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                fullWidth={"true"}
+                scroll={"paper"}
+                aria-labelledby="scroll-dialog-title"
+                aria-describedby="scroll-dialog-description"
+            >
+                <DialogTitle id="scroll-dialog-title">Preview my resume </DialogTitle>
+                <DialogContent dividers={"true"}>
+                    <DialogContentText
+                        id="scroll-dialog-description"
+                        ref={descriptionElementRef}
+                        tabIndex={-1}
+                    >
+                        {[...new Array(50)]
+                            .map(
+                                () => `Cras mattis consectetur purus sit amet fermentum.
+                                                                Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+                                                                Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                                                                Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
+                            )
+                            .join("\n")}
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleClose}>Subscribe</Button>
+                </DialogActions>
+            </Dialog>
             <Box display="flex" m={1} borderRadius={"20px"}>
                 <AppBar position="static">
                     <StyledToolbar>
@@ -266,7 +312,11 @@ export default function ProminentAppBar({ total, dest = "Home" }) {
                                     </Item>
 
 
-                                    <Box m={2} display={"grid"}>
+
+                                    <Box m={2} display={"flex"}>
+                                        <Button onClick={handleClickOpen} variant="contained" color="success" sx={{ fontSize: "14px", m: "5px" }}>
+                                            Preview Resume
+                                        </Button>
                                         <Button
                                             sx={{
                                                 backgroundColor: colors.blueAccent[700],
@@ -278,7 +328,9 @@ export default function ProminentAppBar({ total, dest = "Home" }) {
                                             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
                                             Download Resume
                                         </Button>
+
                                     </Box>
+
                                 </Box>
                             </Grid>
                             <Grid item xs={4} marginTop={5}>
@@ -287,9 +339,8 @@ export default function ProminentAppBar({ total, dest = "Home" }) {
                                     display: 'flex', maxWidth: 400,
 
                                 }}> */}
-                                    <div className="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="skatende" data-version="v1">
-                                        <a className="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/skatende?trk=profile-badge">Stephane Katende</a>
-                                    </div>
+                                    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="skatende" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/skatende?trk=profile-badge">Stephane Katende</a></div>
+
                                     {/* </Card> */}
                                 </Box>
                             </Grid>

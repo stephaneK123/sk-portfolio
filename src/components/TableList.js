@@ -61,13 +61,13 @@ const initialValues = {
   firstName: "",
   lastName: "",
   email: "",
-  contact: "",
-  address1: "",
+  topic: "",
+  note: "",
   address2: "",
 };
 
 export default function TableList() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(2);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -81,7 +81,7 @@ export default function TableList() {
 
   return (
     <Box
-      sx={{ flexGrow: 1, display: 'flex', height: 300 }}
+      sx={{ flexGrow: 1, display: 'flex'}}
     >
       <Tabs
         orientation="vertical"
@@ -104,7 +104,25 @@ export default function TableList() {
 
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Where it all started..
+        <Box m="1px">
+          <Typography variant="h6" gutterBottom>
+            Where it all started..
+          </Typography>
+
+          <Box component="div" whiteSpace="normal">
+            <Typography variant="h5" gutterBottom flexWrap={"true"} paragraph width={"300px"} >
+              It's early 2019, I am a junior in highschool, and getting bored of it.
+              My teacher noticed my interest in computers and  introduced me to early college.
+              I went to an Android summer camp and a dream was born.
+              I am a semester shy of getting my bachalors in Software Engineering.
+              I have learned a lot along the way and done a fair amount to find my interests and goals in the field.
+              I honestly still get lost myself, and here is an attempt to centrilize all my efforts. </Typography>
+          </Box>
+
+          <Typography variant="button" display="block" >
+            See some of my work
+          </Typography>
+        </Box>
       </TabPanel>
       <TabPanel value={value} index={3}>
         <Box m="1px">
@@ -124,7 +142,7 @@ export default function TableList() {
               <form onSubmit={handleSubmit}>
                 <Box
                   display="grid"
-                  gap="1px"
+                  gap="8px"
                   gridTemplateColumns="repeat(4, minmax(0, 1fr))"
                   sx={{
                     "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
@@ -142,6 +160,7 @@ export default function TableList() {
                     error={!!touched.firstName && !!errors.firstName}
                     helperText={touched.firstName && errors.firstName}
                     sx={{ gridColumn: "span 2" }}
+                    inputProps={{ maxLength: 12 }}
                   />
                   <TextField
                     fullWidth
@@ -155,61 +174,50 @@ export default function TableList() {
                     error={!!touched.lastName && !!errors.lastName}
                     helperText={touched.lastName && errors.lastName}
                     sx={{ gridColumn: "span 2" }}
+                    inputProps={{ maxLength: 12 }}
                   />
                   <TextField
                     fullWidth
                     variant="filled"
                     type="text"
-                    label="Email"
+                    label="Your Email"
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={values.email}
                     name="email"
                     error={!!touched.email && !!errors.email}
                     helperText={touched.email && errors.email}
-                    sx={{ gridColumn: "span 4" }}
+                    sx={{ gridColumn: "span 2" }}
+                    inputProps={{ maxLength: 25 }}
                   />
                   <TextField
                     fullWidth
                     variant="filled"
                     type="text"
-                    label="Contact Number"
+                    label="Topic"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.contact}
-                    name="contact"
-                    error={!!touched.contact && !!errors.contact}
-                    helperText={touched.contact && errors.contact}
-                    sx={{ gridColumn: "span 4" }}
+                    value={values.topic}
+                    name="topic"
+                    error={!!touched.topic && !!errors.topic}
+                    helperText={touched.topic && errors.topic}
+                    sx={{ gridColumn: "span 2" }}
                   />
                   <TextField
                     fullWidth
                     variant="filled"
                     type="text"
-                    label="Address 1"
+                    label="Note"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.address1}
-                    name="address1"
-                    error={!!touched.address1 && !!errors.address1}
-                    helperText={touched.address1 && errors.address1}
+                    value={values.note}
+                    name="note"
+                    error={!!touched.note && !!errors.note}
+                    helperText={touched.note && errors.note}
                     sx={{ gridColumn: "span 4" }}
                   />
-                  <TextField
-                    fullWidth
-                    variant="filled"
-                    type="text"
-                    label="Address 2"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.address2}
-                    name="address2"
-                    error={!!touched.address2 && !!errors.address2}
-                    helperText={touched.address2 && errors.address2}
-                    sx={{ gridColumn: "span 4" }}
-                  />
-                  <Button type="submit" color="secondary" variant="contained">
-                    Create New User
+                  <Button style={{ fontSize: '9px' }} type="button" color="secondary" variant="outlined">
+                    Send it my way!
                   </Button>
                 </Box>
                 <Box display="flex" justifyContent="end" mt="20px">
@@ -221,10 +229,10 @@ export default function TableList() {
         </Box>
       </TabPanel>
       <TabPanel value={value} index={4}>
-        Item Five
+        nothing interesting here
       </TabPanel>
       <TabPanel value={value} index={5}>
-        Item Six
+        nothing intersting here 
       </TabPanel>
     </Box>
   );
