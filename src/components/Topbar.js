@@ -228,8 +228,12 @@ export default function ProminentAppBar({ total, dest = "Home" }) {
                 scroll={"paper"}
                 aria-labelledby="scroll-dialog-title"
                 aria-describedby="scroll-dialog-description"
+                maxWidth={"md"}
             >
-                <DialogTitle id="scroll-dialog-title">Preview my resume </DialogTitle>
+                <DialogTitle id="scroll-dialog-title" textAlign={"center"}>Preview my resume
+                    
+                        <Button variant="contained" sx={{ml:1}}onClick={handleClose}>Okay Cool</Button>
+                     </DialogTitle>
                 <DialogContent dividers={"true"}>
                     <DialogContentText
                         id="scroll-dialog-description"
@@ -246,14 +250,11 @@ export default function ProminentAppBar({ total, dest = "Home" }) {
                             .join("\n")}
                     </DialogContentText>
                 </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleClose}>Subscribe</Button>
-                </DialogActions>
+
             </Dialog>
-            <Box display="flex" m={1} borderRadius={"20px"}>
+            <Box display="flex" m={1} sx={{ border: '1px dashed grey' }} >
                 <AppBar position="static">
-                    <StyledToolbar>
+                    <StyledToolbar >
                         <Grid
                             container
                             direction="row"

@@ -9,6 +9,7 @@ import {
     TextField,
     Tooltip,
     Typography,
+    useTheme
 } from "@mui/material";
 import React, { useState } from "react";
 import {
@@ -20,6 +21,8 @@ import {
     VideoCameraBack,
 } from "@mui/icons-material";
 import { Box } from "@mui/system";
+import { theme, tokens} from "../../theme";
+
 
 const SytledModal = styled(Modal)({
     display: "flex",
@@ -35,7 +38,10 @@ const UserBox = styled(Box)({
 });
 
 const Add = () => {
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
     const [open, setOpen] = useState(false);
+
     return (
         <>
             <Tooltip
@@ -44,7 +50,7 @@ const Add = () => {
                 sx={{
                     position: "fixed",
                     bottom: 20,
-                    left: { xs: "calc(50% - 25px)", md: 30 },
+                    left: { xs: "calc(50% - 25px)", md: 20 },
                 }}
             >
                 <Fab color="primary" aria-label="add">

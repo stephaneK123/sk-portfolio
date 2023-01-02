@@ -81,7 +81,7 @@ export default function TableList() {
 
   return (
     <Box
-      sx={{ flexGrow: 1, display: 'flex'}}
+      sx={{ flexGrow: 1, display: 'flex' }}
     >
       <Tabs
         orientation="vertical"
@@ -89,7 +89,7 @@ export default function TableList() {
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: 'Highlight', textAlign: "center" }}
+        sx={{ borderRight: 1, borderColor: 'Background', textAlign: "center" }}
       >
         <Tab label="" {...a11yProps(-1)} />
         <Tab label="" {...a11yProps(-1)} />
@@ -109,8 +109,8 @@ export default function TableList() {
             Where it all started..
           </Typography>
 
-          <Box component="div" whiteSpace="normal">
-            <Typography variant="h5" gutterBottom flexWrap={"true"} paragraph width={"300px"} >
+          <Box display="flex" component="div" whiteSpace="normal">
+            <Typography variant="h5" gutterBottom sx={{ wordWrap: "break-word", width: "300px" }} >
               It's early 2019, I am a junior in highschool, and getting bored of it.
               My teacher noticed my interest in computers and  introduced me to early college.
               I went to an Android summer camp and a dream was born.
@@ -232,7 +232,7 @@ export default function TableList() {
         nothing interesting here
       </TabPanel>
       <TabPanel value={value} index={5}>
-        nothing intersting here 
+        nothing intersting here
       </TabPanel>
     </Box>
   );
