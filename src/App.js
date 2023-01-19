@@ -59,19 +59,21 @@ function App() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <div className="app">
+        <div className="app" style={{ display: "flex" }}>
           <Sidebar isSidebar={isSidebar} />
-          <main className="content">
-            <Topbar dest={location.pathname} setIsSidebar={setIsSidebar} />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/credibility" element={<Credibility />} />
-              <Route path="/team" element={<Team />} />
-              <Route path="/socials" element={<Socials />} />
-              <Route path="/about" element={<About />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
+          <div style={{ display: "flex", width: "100%" }}>
+            <main className="content">
+              <Topbar dest={location.pathname} setIsSidebar={setIsSidebar} />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/credibility" element={<Credibility />} />
+                <Route path="/team" element={<Team />} />
+                <Route path="/socials" element={<Socials />} />
+                <Route path="/about" element={<About />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+          </div>
         </div>
       </ThemeProvider>
     </ColorModeContext.Provider>)

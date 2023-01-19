@@ -21,7 +21,7 @@ const Team = ({
 
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
-      <Box mb="30px">
+      <Box mb="5px">
         <Contacts />
         <Typography
           variant="h2"

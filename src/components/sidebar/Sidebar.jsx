@@ -72,11 +72,12 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
-        position: "fixed",
+        position: "sticky",
         height: "100vh",
         top: 0,
         bottom: 0,
         zIndex: 10000,
+
         "& .pro-sidebar": {
           height: `100% !important`,
         },
@@ -95,9 +96,10 @@ const Sidebar = () => {
         "& .pro-menu-item.active": {
           color: "#6870fa !important",
         },
+        display: { xs: "inline-block", sm: "inline-block" },
       }}
     >
-      <ProSidebar width={400} collapsed={isCollapsed}>
+      <ProSidebar breakPoint="md" width={400} collapsed={isCollapsed}>
         <Menu iconShape="square">
           {/* sidar toggle btn  */}
           <MenuItem

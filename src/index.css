@@ -5,12 +5,17 @@ body,
 #root,
 .app,
 .content {
+  width: 100%;
   font-family: "Source Sans Pro", sans-serif;
+}
+
+.content{
+  width: 100%;
 }
 
 .app {
   display: flex;
-  /* position: relative; */
+  position: relative;
 }
 
 ::-webkit-scrollbar {

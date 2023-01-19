@@ -163,8 +163,6 @@ export default function ProminentAppBar({ total, dest = "Home" }) {
             setToken(token);
             setClientToken(token);
         }
-
-
     }, [token]);
 
     //get the spotify data
@@ -222,6 +220,9 @@ export default function ProminentAppBar({ total, dest = "Home" }) {
     ) : (
         <>
             <Dialog
+                sx={{
+                    zIndex: 10000
+                }}
                 open={open}
                 onClose={handleClose}
                 fullWidth={"true"}
@@ -229,11 +230,12 @@ export default function ProminentAppBar({ total, dest = "Home" }) {
                 aria-labelledby="scroll-dialog-title"
                 aria-describedby="scroll-dialog-description"
                 maxWidth={"md"}
+
             >
                 <DialogTitle id="scroll-dialog-title" textAlign={"center"}>Preview my resume
-                    
-                        <Button variant="contained" sx={{ml:1}}onClick={handleClose}>Okay Cool</Button>
-                     </DialogTitle>
+
+                    <Button variant="contained" sx={{ ml: 1 }} onClick={handleClose}>Okay Cool</Button>
+                </DialogTitle>
                 <DialogContent dividers={"true"}>
                     <DialogContentText
                         id="scroll-dialog-description"
@@ -252,7 +254,7 @@ export default function ProminentAppBar({ total, dest = "Home" }) {
                 </DialogContent>
 
             </Dialog>
-            <Box display="flex" m={1} sx={{ border: '1px dashed grey' }} >
+            <Box display="flex" m={1} sx={{border: '1px dashed grey'}} >
                 <AppBar position="static">
                     <StyledToolbar >
                         <Grid

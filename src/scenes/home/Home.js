@@ -32,7 +32,7 @@ const Home = () => {
 
   return (
     <>
-      <Box m="20px">
+      <Box m="5px" >
         {/* stephane's intro + download source code */}
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Header title="Stephane" subtitle="Someone told me to make a resume website, here it is?? updating as time allows" />

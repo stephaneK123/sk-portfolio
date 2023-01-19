@@ -53,13 +53,13 @@ const Contacts = () => {
     ];
 
     return (
-        <Box m="20px">
+        <Box m="5px">
             <Header
-                title="CONTACTS"
-                subtitle="List of Contacts for Future Reference"
+                title=""
+                subtitle="Here is some information about my team, and what we do!"
             />
             <Box
-                m="40px 0 0 0"
+                m="5px 0 0 0"
                 height="75vh"
                 sx={{
                     "& .MuiDataGrid-root": {
