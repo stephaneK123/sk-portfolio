@@ -32,7 +32,8 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-
+import Divider from '@mui/material/Divider';
+const myresume1 = require("../assets/sk_resume_1.jpg");
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     alignItems: "flex-start",
@@ -97,48 +98,29 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     }
 }));
 
-const useScript = (url) => {
-    useEffect(() => {
-        const head = document.querySelector("head");
-        const script = document.createElement('script');
-
-
-        // script.type = "application/javascript";
-        script.setAttribute("src", url);
-        script.setAttribute("type", "texts/javascript");
-        script.setAttribute("async", true);
-        script.defer = true;
-        head.appendChild(script);
-
-        script.addEventListener("load", () => {
-            console.log("file loaded");
-        });
-
-        script.addEventListener("error", (ev) => {
-            console.log("error on loading file", ev);
-        });
-
-        // return () => {
-        //     head.removeChild(script);
-        // }
-    }, [url]);
-};
-
 const Login = () => {
     return (
-        <Box display="flex" m={1} borderRadius={"20px"}>
-            <div className="login-page" >
-                <img
-                    src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png"
-                    alt="logo-spotify"
-                    height={400}
-                    width={800}
-                    className="logo"
-                />
-                <a href={loginEndpoint}>
-                    <div className="login-btn">LOG IN TO SPOTIFY</div>
-                </a>
-            </div>
+        <Box m={1} borderRadius={"20px"} justifyContent={"center"} display={"grid"} alignContent={"center"}>
+            <img
+                src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png"
+                alt="logo-spotify"
+                height={400}
+                width={800}
+                className="logo"
+                sx={{ display: "block", width: "100%" }}
+            />
+            <Stack
+                direction="row"
+                divider={<Divider orientation="vertical" flexItem />}
+                spacing={2}
+            >
+                <Item>  <Button variant="outlined" sx={{ backgroundColor: "#fff", width: "fit-content", textAlign: "center" }} >
+                    <a href={loginEndpoint}>LOG IN TO SPOTIFY</a>
+                </Button></Item>
+                <Item> <Button variant="outlined" sx={{ backgroundColor: "", width: "fit-content", textAlign: "center" }} >
+                    SKIP LOG IN TO SPOTIFY
+                </Button></Item>
+            </Stack>
         </Box>
     );
 }
@@ -193,9 +175,6 @@ export default function ProminentAppBar({ total, dest = "Home" }) {
         artists.push(artist.name);
     });
 
-    //linkedin 
-    // useScript("https://platform.linkedin.com/badges/js/profile.js");
-
     //dialog for resume preview 
     const [open, setOpen] = React.useState(false);
     const handleClose = () => {
@@ -215,7 +194,13 @@ export default function ProminentAppBar({ total, dest = "Home" }) {
         }
     }, [open]);
 
-    return !token ? (
+
+    const [skipLogin, setSkipLogin] = React.useState(false);
+    const handleSkipLogin = () => {
+        setSkipLogin(false);
+    };
+
+    return !token || skipLogin ? (
         <Login />
     ) : (
         <>
@@ -232,29 +217,20 @@ export default function ProminentAppBar({ total, dest = "Home" }) {
                 maxWidth={"md"}
 
             >
-                <DialogTitle id="scroll-dialog-title" textAlign={"center"}>Preview my resume
-
+                <DialogTitle id="scroll-dialog-title" textAlign={"center"}>
                     <Button variant="contained" sx={{ ml: 1 }} onClick={handleClose}>Okay Cool</Button>
                 </DialogTitle>
                 <DialogContent dividers={"true"}>
-                    <DialogContentText
-                        id="scroll-dialog-description"
-                        ref={descriptionElementRef}
-                        tabIndex={-1}
-                    >
-                        {[...new Array(50)]
-                            .map(
-                                () => `Cras mattis consectetur purus sit amet fermentum.
-                                                                Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                                                                Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                                                                Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
-                            )
-                            .join("\n")}
-                    </DialogContentText>
+                    <CardMedia
+                        component="img"
+                        height="250"
+                        sx={{ padding: "1em 1em 1em 1em", objectFit: "contain" }}
+                        image={myresume1}
+                        alt="resume picture"
+                    />
                 </DialogContent>
-
             </Dialog>
-            <Box display="flex" m={1} sx={{border: '1px dashed grey'}} >
+            <Box display="flex" m={1} sx={{ border: '1px dashed grey' }} >
                 <AppBar position="static">
                     <StyledToolbar >
                         <Grid
@@ -313,9 +289,6 @@ export default function ProminentAppBar({ total, dest = "Home" }) {
                                     <Item elevation={3} >
                                         <DancingText></DancingText>
                                     </Item>
-
-
-
                                     <Box m={2} display={"flex"}>
                                         <Button onClick={handleClickOpen} variant="contained" color="success" sx={{ fontSize: "14px", m: "5px" }}>
                                             Preview Resume

@@ -7,32 +7,15 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
-import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
-import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import { tokens } from "../../theme";
 import MyImage2 from "../../assets/sk_pic.jpg";
-import { LinkedInEmbed } from "react-social-media-embed";
 import Add from "./Add";
 import { positions, textAlign } from "@mui/system";
-
-const Linkedin = () => {
-  return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <LinkedInEmbed
-        url="https://www.linkedin.com/embed/feed/update/urn:li:share:6898694772484112384"
-        postUrl="https://www.linkedin.com/posts/peterdiamandis_5-discoveries-the-james-webb-telescope-will-activity-6898694773406875648-z-D7"
-        width={325}
-        height={570}
-      />
-    </div>
-  );
-};
+import SchoolIcon from "@mui/icons-material/School";
+import InfoIcon from "@mui/icons-material/Info";
+import GroupsIcon from "@mui/icons-material/Groups";
+import Tooltip from "@mui/material/Tooltip";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -69,6 +52,9 @@ const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [selected, setSelected] = useState("Dashboard");
 
+  const [isOpen, setIsOpen] = useState(false);
+
+
   return (
     <Box
       sx={{
@@ -77,7 +63,6 @@ const Sidebar = () => {
         top: 0,
         bottom: 0,
         zIndex: 10000,
-
         "& .pro-sidebar": {
           height: `100% !important`,
         },
@@ -156,31 +141,35 @@ const Sidebar = () => {
                   color={colors.grey[300]}
                   sx={{ m: "15px 0 5px 20px", textAlign: "center" }}
                 >
-                  Made with ❤️ and hurry by SK 2022
+                  Made with ❤️ and hurry by SK 2023
                 </Typography>
               </Box>
             </Box>
           )}
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-            <Item
-              title="Stephane"
-              to="/"
-              icon={<HomeOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+            <Tooltip title="testingg" placement="right" open={isOpen}>
+              <Item
+                title="Stephane"
+                to="/"
+                icon={<HomeOutlinedIcon />}
+                selected={selected}
+                setSelected={setSelected}
+                onMouseEnter={() => setIsOpen(true)}
+                onMouseLeave={() => setIsOpen(false)}
+              />
+            </Tooltip>
             <Item
               title="Credibility"
               to="/credibility"
-              icon={<PeopleOutlinedIcon />}
+              icon={<SchoolIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="The Team"
               to="/team"
-              icon={<PeopleOutlinedIcon />}
+              icon={<GroupsIcon />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -194,7 +183,7 @@ const Sidebar = () => {
             <Item
               title="About"
               to="/about"
-              icon={<ContactsOutlinedIcon />}
+              icon={<InfoIcon />}
               selected={selected}
               setSelected={setSelected}
             />

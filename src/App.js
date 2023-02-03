@@ -49,7 +49,6 @@ const Login = () => {
   );
 }
 
-
 function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
@@ -78,5 +77,4 @@ function App() {
       </ThemeProvider>
     </ColorModeContext.Provider>)
 };
-
 export default App;
