@@ -43,7 +43,7 @@ You will need to get a copy of the repo (either downloading it or cloning) and y
 
 A few thoughts were put together in the making of site, and a decent architecture pattern was followed. My main concerns were to keep code organized and a little easier for second set of eyes to follow and what not. I mainly followed footprint on common pratices out there and scoped it to my specific needs. 
 
-![MVVM Architecture](art/mvvm-arch.jpg)
+![MVVM Architecture](mvvm-arch.jpg)
 
 ## ➡️Tools  🛠
 
