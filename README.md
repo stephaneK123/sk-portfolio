@@ -31,6 +31,8 @@ Copyright (c) Feb 2023 Stephane Katende
 
 The main branch should usually be compiling and have a working version of the project. However, I have learned that is not always the case. Having a quick demo to show off can be helpful, and here's one:  
 
+![Demo](sk_demo.gif)
+
 ## ➡️Running the project
 
 You will need to get a copy of the repo (either downloading it or cloning) and you will need Node.js and NPM. Once you have all of those then you can supply open the project in your editor of choice, and run it(with `npm start`)! 
