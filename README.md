@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+<h1 align="center" font-size="40px">
+     sk-portfolio 🕸️
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+**sk-portolio** is a web app made with react. It's indented to show my efforts online and a sort of one-stop-shop for anything regarding me that I think is worth while to put out there. It's meant to be a straight forward site with me essentially playing around with web tools and see what I can get running with the time and limited skills I got in the domain. 
 
-In the project directory, you can run:
+## ➡️Timeline + Context 
 
-### `npm start`
+I started this project and used it for one of my web dev class in my Fall 2022 semester. I have since been slowly and gruadually designing my idea for it and implementing it slowly as time goes. I plan to eventually make it live hosted right on my github. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ➡️Copyright + Authors
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Authors 
 
-### `npm test`
+[Stephane K](https://github.com/stephaneK123) (Dev and Design)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### License
 
-### `npm run build`
+As of right now, not too many concerns on copyright. I believe in true transparency, and crediting other's work that help shape yours as well. However, it's always good to cover yourself just incase and here is the typical copyright: 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:``` 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.```
 
-### `npm run eject`
+Copyright (c) Feb 2023 Stephane Katende
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ➡️Latest Demo
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The main branch should usually be compiling and have a working version of the project. However, I have learned that is not always the case. Having a quick demo to show off can be helpful, and here's one:  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## ➡️Running the project
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+You will need to get a copy of the repo (either downloading it or cloning) and you will need Node.js and NPM. Once you have all of those then you can supply open the project in your editor of choice, and run it(with `npm start`)! 
 
-## Learn More
+## ➡️Design / Wireframes 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[Here](https://www.figma.com/file/DFiExxpwZE8WdXGxAnoHq6/SK-Porfolio?node-id=126%3A42&t=VBz1vkvS0q38JvBK-1) is the design of the project. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## ➡️Architecture
 
-### Code Splitting
+A few thoughts were put together in the making of site, and a decent architecture pattern was followed. My main concerns were to keep code organized and a little easier for second set of eyes to follow and what not. I mainly followed footprint on common pratices out there and scoped it to my specific needs. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![MVVM Architecture](art/mvvm-arch.jpg)
 
-### Analyzing the Bundle Size
+## ➡️Tools  🛠
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This project makes use of quite a few third party libraries to work properly. If I am being honest this more than likely is not practical in most cases as you typically want to avoid any dependency unless really needed and stick to framework provided solutions. I wanted to play with web dev a little bit too with my semi-interactive web application and go through the process and eventually deploying it. Here are third party libraries that help shaped this:  
 
-### Making a Progressive Web App
+- [emotion/react](https://www.npmjs.com/package/@emotion/react) - to help with css styling. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 
