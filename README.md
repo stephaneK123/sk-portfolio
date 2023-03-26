@@ -42,7 +42,7 @@ This project makes use of quite a few third party libraries to work properly. If
 
 [Stephane K](https://github.com/stephaneK123) (Dev and Design)
 
-### License
+### Copyright
 
 As of right now, not too many concerns on copyright. I believe in true transparency, and crediting other's work that help shape yours as well. However, it's always good to cover yourself just incase and here is the typical copyright: 
 
